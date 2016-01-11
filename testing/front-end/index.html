@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>全國地磅站即時監測系統</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="css/bootstrap-theme.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">全國地磅站即時監測系統</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <img class="loginAvater" src="img/cube.png"> Alex <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a></li>
+                            <li><a href="#">Another action</a></li>
+                            <li><a href="#">Something else here</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#">登出</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">儀表板</a></li>
+                    <li><a href="#">設定</a></li>
+                    <li><a href="#">說明</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+                <ul class="nav nav-sidebar">
+                     <li class="active"><a href="#">系統概況 <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">須注意 <span class="badge">2</span></a></li>
+                </ul>
+                <hr>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">汐止</a></li>
+                    <li><a href="">造橋</a></li>
+                    <li><a href="">后里 <span class="badge">1</span></a></li>
+                    <li><a href="">員林</a></li>
+                    <li><a href="">斗南</a></li>
+                    <li><a href="">新營</a></li>
+                    <li><a href="">新市</a></li>
+                    <li><a href="">岡山</a></li>
+                </ul>
+                <hr>
+                <ul class="nav nav-sidebar">
+                    <li><a href="">七堵</a></li>
+                    <li><a href="">樹林</a></li>
+                    <li><a href="">龍潭</a></li>
+                    <li><a href="">後龍</a></li>
+                    <li><a href="">大甲</a></li>
+                    <li><a href="">名間</a></li>
+                    <li><a href="">古坑</a></li>
+                    <li><a href="">白河</a></li>
+                    <li><a href="">善化</a></li>
+                    <li><a href="">田寮</a></li>
+                    <li><a href="">竹田 <span class="badge">1</span></a></li>
+                </ul>
+            </div>
+            <div class="col-sm-9 col-md-10 main">
+                <h1 class="page-header">系統概況</h1>
+                <div class="alert alert-info" role="alert">汐止 南下 AB-1234，標示為已處理</div>
+                <div class="alert alert-warning" role="alert">后里 南下 CD-5678 超磅逾 20%，請有關人員立即處理</div>
+                <div class="row placeholders">
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <iframe width="200" height="200" scrolling="no" class="highwayCamera" src="http://210.242.179.117/iViewImageInternet.php?params=117,A42,162,27,0,0,352,240"></iframe>
+                        <h4>汐止系統 Can 1</h4>
+                        <span class="text-muted">汐止系統南下地磅出口</span>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <iframe width="200" height="200" scrolling="no" class="highwayCamera" src="http://210.241.63.120/abs2mjpg/bmjpg?camera=202"></iframe>
+                        <h4>后里系統 Can 5</h4>
+                        <span class="text-muted">后里系統南下地磅站西側停車場</span>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <iframe width="200" height="200" scrolling="no" class="highwayCamera" src="http://1968.freeway.gov.tw/tsv/getcctv/uid/CCTV-N3-S-418.008"></iframe>
+                        <h4>竹田系統 Can 1</h4>
+                        <span class="text-muted">汐止系統北上過磅區</span>
+                    </div>
+                    <div class="col-xs-6 col-sm-3 placeholder">
+                        <iframe width="200" height="200" scrolling="no" class="highwayCamera" src="http://210.241.63.120/abs2mjpg/bmjpg?camera=240&1452516244122"></iframe>
+                        <h4>斗南系統 Can 2</h4>
+                        <span class="text-muted">斗南系統南下車道</span>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+
+</html>
