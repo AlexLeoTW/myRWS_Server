@@ -1,3 +1,11 @@
+# Database Password
+env_config.js
+
+# HTTPS Cert
+*.key
+*.crt
+*.pem
+
 # Built application files
 *.apk
 *.ap_
