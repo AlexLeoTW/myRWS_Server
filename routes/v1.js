@@ -31,30 +31,36 @@ router.get('/freeway', function(req, res, next) {
 });
 
 router.get('/station', function(req, res, next) {
-    var query = 'SELECT * FROM myRWS.weight_station WHERE ';
+    var query = '';
 
     if (req.query.freeway) {
-        query += 'freeway_id' + mysql.escape(req.query.freeway);
+        query += 'freeway_id=' + mysql.escape(req.query.freeway);
     }
 
-    if (req.query.freeway) {
-        //var query = 'SELECT * FROM myRWS.weight_station WHERE id=' + mysql.escape(req.query.id);
+    if (req.query.north) {
+        var condition = '';
+        if (mysql.escape(req.query.north).toUpperCase().indexOf('TRUE') !== -1) {
+            condition = 'TRUE';
+        } else {
+            condition = 'FALSE';
+        }
+        query += 'go_north=' + condition;
+    }
 
+    if (query.length > 0) {
+        query = 'SELECT * FROM myRWS.weight_stastion WHERE ' + query;
         console.log('query: [' + query + ']');
         db.query(query, function (err, rows, fields) {
             if (err) { throw err; }
-            if (rows[0]) {
-                res.send(JSON.stringify(rows[0]));
-            } else {
-                res.send(JSON.stringify({}));
+            if (rows) {
+                res.send(JSON.stringify(rows));
             }
         });
     } else {
-        db.query('SELECT * FROM myRWS.freeway', function (err, rows, fields) {
-            res.send(JSON.stringify(rows));
-        });
+        var err = new Error('Too few conditions');
+        err.status = 413;
+        throw err;
     }
-    //console.log('query:' + req.query);
 });
 
 module.exports = router;
