@@ -4,6 +4,7 @@ var debug = require('debug')('myRWS:v1');
 var env_config = require('../env_config');
 var mysql = require('mysql');
 var db = mysql.createPool(env_config.db);
+var geolocation = require('../modules/geolocation');
 
 db.on('enqueue', function () {
     debug('DB Overloaded!');
@@ -60,6 +61,44 @@ router.get('/station', function(req, res, next) {
         var err = new Error('Too few conditions');
         err.status = 413;
         throw err;
+    }
+});
+
+router.get('/path', function(req, res, next) {
+    var range = 10;
+    var query = '';
+    var kmToLon = 1/109.641;
+    var kmToLat = 1/110.598;
+
+    console.log('Path!!');
+
+    if (req.query.lon && req.query.lat) {
+        //Example: [SELECT `freeway_id`, `longtitude`, `latitude` FROM `path` WHERE `longtitude` BETWEEN 120 AND 121 AND `latitude` BETWEEN 22.5 AND 22.9]
+        query += 'SELECT `freeway_id`, `longtitude`, `latitude` FROM myRWS.path WHERE ';
+        if (isNaN(Number(req.query.lon))) {
+            throw new Error('Wrong Format for longtitude');
+        } else {
+            console.log('Set Query!!');
+            query += Number(req.query.lon) - range/2*kmToLon;       // '120.0'
+            query += ' AND ';
+            query += Number(req.query.lon) + range/2*kmToLon;       // '122'
+        }
+
+        query += ' AND `latitude` BETWEEN ';
+
+        if (isNaN(Number(req.query.lat))) {
+            throw new Error('Wrong Format for latitude');
+        } else {
+            query += Number(req.query.lat) - range/2*kmToLat;       // 22.5
+            query += ' AND ';                                       // AND
+            query += Number(req.query.lat) + range/2*kmToLat;       // 22.9
+        }
+
+        db.query(query, function (err, rows, fields) {
+            console.log('query: [' + query + ']');
+            if (err) {throw err;}
+            res.send(JSON.stringify(rows));
+        });
     }
 });
 
