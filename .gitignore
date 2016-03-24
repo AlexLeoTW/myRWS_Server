@@ -1,3 +1,5 @@
+node_modules
+
 # Database Password
 env_config.js
 
