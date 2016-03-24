@@ -70,8 +70,6 @@ router.get('/path', function(req, res, next) {
     var kmToLon = 1/109.641;
     var kmToLat = 1/110.598;
 
-    console.log('Path!!');
-
     if (req.query.lon && req.query.lat) {
         //Example: [SELECT `freeway_id`, `longtitude`, `latitude` FROM `path` WHERE `longtitude` BETWEEN 120 AND 121 AND `latitude` BETWEEN 22.5 AND 22.9]
         query += 'SELECT `freeway_id`, `longtitude`, `latitude` FROM myRWS.path WHERE ';
